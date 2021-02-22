@@ -11,9 +11,8 @@ import org.apache.http.params.HttpParams;
 /**
  * REST client can be made using Apache httpComponents or Jersey JAX-RS
  * This class shows example using apache http client.
- * For more info visit :
- * https://www.javacodegeeks.com/2012/09/simple-rest-client-in-java.html
- * https://itnext.io/how-to-create-a-simple-rest-client-for-testing-your-api-a0554d8380f8
+ * This  class shows example  when two threads or users access same resource concurrently how the application is thread-safe  
+ * and handles concurrent requests
  *
  */
 public class ConcurrentClient implements  Runnable{
@@ -43,9 +42,11 @@ public class ConcurrentClient implements  Runnable{
         makeWithDrawl();
     }
 
+    //This method operates for concurrent requests  
     private void makeWithDrawl(){
         System.out.println(Thread.currentThread().getName() + " is going to withdraw ");
         try{
+            //Thread is sent to sleep so that other threads access this method.
             Thread.sleep(500);
         }catch (InterruptedException e){e.getMessage();}
         try {
