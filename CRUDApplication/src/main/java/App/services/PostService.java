@@ -4,6 +4,7 @@ import App.model.Post;
 
 import java.util.List;
 
+//This abstract is used for performing CRUD operations using Java Objects
 public interface PostService {
     //read
     List<Post> findAll();
