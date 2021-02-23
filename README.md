@@ -1,5 +1,5 @@
 # CRUDApplication
-*SpringBoot Application which shows basic CRUD database operations using REST API.*
+**SpringBoot Application which shows basic CRUD database operations using REST API.**
 
 JPAImpl: 
 * This application uses embedded in-memory H2 database.
