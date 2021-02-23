@@ -12,13 +12,14 @@ public class PostControllerJPAImpl {
     @Autowired
     private PostRepository postService;
 
+    // viewAll posts
     @GetMapping("/posts")
-    public List<Post> retrieveAllStudents() {
+    public List<Post> retrieveAllPosts() {
         return postService.findAll();
     }
 
 
-
+    //view a specific post
     @GetMapping("/post/view/{id}")
     public Post view(@PathVariable Long id) {
         Post post = postService.findOne(id);
@@ -29,13 +30,15 @@ public class PostControllerJPAImpl {
         return post;
     }
 
+    //delete a post
     @DeleteMapping("/posts/delete/{id}")
-    public String deleteStudent(@PathVariable long id) {
+    public String deletePost(@PathVariable long id) {
         postService.delete(id);
         return "true";
     }
 
 
+    //create a post
     @PostMapping("/posts/create")
     public String createPost(@RequestBody Post post) {
         postService.save(post);
@@ -43,6 +46,7 @@ public class PostControllerJPAImpl {
 
     }
 
+    //edit a post
     @PutMapping("/posts/edit/{id}")
     public String editPost(@RequestBody Post post, @PathVariable long id) {
 
@@ -53,6 +57,7 @@ public class PostControllerJPAImpl {
      return "updated";
     }
 
+    //This method made as synchronised method to handle concurrent requests.
     @GetMapping("/posts/debit/{id}/{amount}")
     public  synchronized Post debitMoney(@PathVariable long id ,@PathVariable int amount){
         Post post = postService.findOne(id);
